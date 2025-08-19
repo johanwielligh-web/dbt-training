@@ -4,4 +4,4 @@ select
     order_date,
     status
 
-from EEE_TRAINING_JWI.dbt.orders
+from {{ source('dbt', 'orders') }}
