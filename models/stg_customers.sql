@@ -3,4 +3,4 @@ select
     first_name,
     last_name
 
-from EEE_TRAINING_JWI.dbt.customers
+from {{ source('dbt', 'customers') }}
