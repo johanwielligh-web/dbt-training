@@ -3,4 +3,4 @@ select
     first_name,
     last_name
 
-from {{ source('dbt', 'customers') }}
+from {{ source('Jaffle_shop', 'customers') }}
