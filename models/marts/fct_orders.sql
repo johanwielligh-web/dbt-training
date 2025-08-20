@@ -1,9 +1,10 @@
-payments as (
+with payments as (
 
     select 
         order_id,
         sum(amount) as lifetime_value
     from {{ ref('stg_stripe_payments') }}
+    group by order_id
 
 ),
 
