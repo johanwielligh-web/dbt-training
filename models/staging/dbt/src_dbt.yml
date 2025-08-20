@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: dbt
+    database: EEE_TRAINING_JWI
+    schema: dbt
+    tables:
+      - name: customers
+      - name: orders
+      - name: payment
