@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: dbt
+  - name: Jaffle_shop
     database: EEE_TRAINING_JWI
     schema: dbt
     tables:
