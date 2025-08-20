@@ -1,8 +1,7 @@
 with payments as (
 
     select 
-        order_id,
-        sum(amount) as lifetime_value
+        *
     from {{ ref('stg_stripe_payments') }}
     group by order_id
 
@@ -17,18 +16,25 @@ orders as (
 ),
 
 
+order_payments as (
+    select
+        order_id,
+        sum (case when [status] = 'success' then amount end) as amount
 
-final as (
+    from payments
+    group by 1
+),
+
+ final as (
 
     select
-        orders.customer_id,
         orders.order_id,
-        payments.lifetime_value
+        orders.customer_id,
+        orders.order_date,
+        coalesce (order_payments.amount, 0) as amount
 
     from orders
-
-    left join payments using (order_id)
-
+    left join order_payments using (order_id)
 )
 
 select * from final
