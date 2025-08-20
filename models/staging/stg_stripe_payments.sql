@@ -3,4 +3,4 @@ select
     orderid as order_id,
     amount
 
-from {{ source('dbt', 'payments') }}
+from {{ source('dbt', 'payment') }}
